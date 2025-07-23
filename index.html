@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Charly Fox bietet traumhafte Ferienhäuser in Norditalien mit persönlicher Betreuung und authentischem Charme.">
+  <meta name="keywords" content="Ferienhäuser, Norditalien, Urlaub, Italien, Comer See, Ligurien, Adria, Gardasee">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://yourwebsite.com">
+  <meta property="og:title" content="Charly Fox">
+  <meta property="og:description" content="Traumhafte Ferienhäuser in Norditalien mit persönlicher Betreuung und authentischem Charme.">
+  <meta property="og:image" content="/assets/images/WebsiteLogo1.0T.png">
+  <meta property="og:url" content="https://yourwebsite.com">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>Charly Fox</title>
+  <link rel="icon" type="image/png" href="assets/icons/WebsiteIcon.png">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Montserrat:wght@700&family=Poppins&display=swap');
+    :root {
+      --black: #1A1A1A;
+      --yellow: #FFB500;
+      --green: #FFB500; /* war: #009246 */
+      --red: #FFB500;   /* war: #CE2B37 */
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--white);
+      color: #333;
+      margin: 0;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+    header {
+      background-color: var(--white);
+      padding: 2.5rem 1rem 1.5rem;
+      width: 100vw;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 3rem;
+      margin: 0;
+      padding: 0;
+    }
+    nav a {
+      font-family: 'Luckiest Guy', 'Montserrat', Arial, sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: var(--yellow);
+    }
+    .language-select {
+      position: absolute;
+      top: 1.2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      z-index: 2;
+    }
+    .language-select img {
+      width: 24px;
+      height: 18px;
+      cursor: pointer;
+    }
+    .hero {
+      min-height: 100vh;
+      padding-top: 3rem;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      text-align: center;
+      background: none;
+      margin-bottom: 3rem;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url("/Website/assets/images/cala-mariolu.jpg") no-repeat center center/cover;
+      opacity: 0.2;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .hero > * {
+      position: relative;
+      z-index: 1;
+    }
+    .hero-logo {
+      width: 1200px;
+      max-width: 80vw;
+      height: auto;
+      display: block;
+      margin-bottom: 2rem;
+      animation: fadeIn 2s ease-in-out;
+    }
+    .slider {
+      width: 100vw;
+      overflow: hidden;
+      position: relative;
+      margin-top: 2rem;
+      min-height: 360px;
+      display: flex;
+      align-items: center;
+    }
+    .slides {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+      width: 300vw; /* 3 Slides à 100vw */
+    }
+    .slide {
+      flex: 0 0 100vw;
+      min-width: 100vw;
+      max-width: 100vw;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      min-height: 360px;
+    }
+    .slide-content {
+      display: flex;
+      flex-direction: row;
+      width: 90%;
+      max-width: 1200px;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 1rem;
+      padding: 2rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      align-items: flex-start;
+      gap: 2rem;
+      z-index: 2;
+    }
+    .main-image {
+      flex: 1.2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .main-image img {
+      width: 100%;
+      max-width: 350px;
+      max-height: 350px;
+      object-fit: cover;
+      border-radius: 1rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+    }
+    .slide-right {
+      position: relative;
+      flex: 1.8;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 1.5rem;
+    }
+    .slide-text {
+      text-align: left;
+      margin-bottom: 0.5rem;
+    }
+    .thumbnail-images {
+      display: flex;
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+    .thumbnail-images img {
+      width: 100px;
+      height: 70px;
+      object-fit: cover;
+      border-radius: 0.5rem;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+    }
+    .thumbnail-images img:hover {
+      transform: scale(1.1);
+    }
+    .slider-controls {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+    }
+    .slider-controls button {
+      background: rgba(0, 0, 0, 0.5);
+      color: var(--white);
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      font-size: 1.5rem;
+      z-index: 1;
+      transition: background 0.3s;
+    }
+    .slider-controls button:hover {
+      background: var(--yellow);
+    }
+    .slider-dots {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+    }
+    .slider-dots span {
+      width: 10px;
+      height: 10px;
+      background: var(--white);
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .slider-dots span.active {
+      background: var(--yellow);
+    }
+    .palm {
+      position: absolute;
+      width: 50px;
+      opacity: 0.7;
+      transition: transform 0.3s;
+    }
+    .palm:hover {
+      transform: scale(1.1);
+    }
+    .palm-1 { top: 10vh; left: 5vw; }
+    .palm-2 { bottom: 10vh; right: 5vw; transform: rotate(180deg); }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    .palm:hover {
+      animation: bounce 1s infinite;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .houses, .about, .contact {
+      padding: 4rem 1rem;
+      max-width: 1200px;
+      margin: 0 auto 3rem;
+    }
+    .houses h2, .about h2, .contact form h3 {
+      font-size: 2.5rem;
+      color: var(--yellow); /* war: var(--green) */
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .houses-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    .house-card {
+      background-color: var(--white);
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .house-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+    .house-card img {
+      width: 100%;
+      height: 12rem;
+      object-fit: cover;
+    }
+    .house-card-content {
+      padding: 1.5rem;
+    }
+    .house-card h3 {
+      font-size: 1.5rem;
+      color: var(--yellow);
+    }
+    .house-card p.price {
+      color: var(--yellow); /* war: var(--red) */
+      font-weight: 600;
+      margin: 0.5rem 0;
+    }
+    .house-card a {
+      background-color: var(--yellow); /* war: var(--red) */
+      color: var(--black);             /* für Kontrast */
+      padding: 0.5rem 1rem;
+      border-radius: 9999px;
+      text-decoration: none;
+      display: inline-block;
+      transition: background-color 0.3s;
+    }
+    .house-card a:hover {
+      background-color: var(--yellow);
+      color: var(--black);
+    }
+    .about {
+      max-width: 1100px;
+      margin: 2rem auto;
+      padding: 1rem;
+      border-radius: 1.5rem;
+      background: #f9f9f9;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    }
+    .about-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      max-height: auto;
+    }
+    .about-header {
+      text-align: center;
+      margin-bottom: 0;
+    }
+    .about-name {
+      font-size: 2rem;
+      color: var(--black);
+      margin: 0;
+    }
+    .about-role {
+      font-size: 1.5rem;
+      color: var(--yellow); /* war: var(--green) */
+      margin-top: 0.5rem;
+    }
+    .about-img {
+      width: 260px;
+      height: 260px;
+      object-fit: cover;
+      border-radius: 50%;
+      box-shadow: 0 4px 16px rgba(255,215,0,0.2);
+      background: #fff;
+      transition: transform 0.3s;
+    }
+    .about-img:hover {
+      transform: scale(1.05);
+    }
+    .about-text {
+      flex: 1;
+      color: #333;
+      text-align: center;
+      margin-top: 1rem;
+    }
+    .about-person {
+      margin-bottom: 2rem;
+      padding: 1rem;
+      border-radius: 1rem;
+    }
+    .about-vater {
+      background: linear-gradient(135deg, #fff7f0 0%, #f9f9f9 100%);
+    }
+    .about-martin {
+      background: linear-gradient(135deg, #f9f9f9 0%, #fff7f0 100%);
+    }
+    .about-tiziana {
+      background: linear-gradient(135deg, #fff7f0 0%, #f9f9f9 100%);
+    }
+    .contact form {
+      max-width: 500px;
+      margin: 0 auto;
+      background: var(--white);
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .contact label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: #333;
+    }
+    .contact input, .contact textarea {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border: 2px solid var(--yellow);
+      border-radius: 0.5rem;
+      box-sizing: border-box;
+    }
+    .contact button {
+      background-color: var(--yellow); /* war: var(--red) */
+      color: var(--black);
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 9999px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .contact button:hover {
+      background-color: var(--yellow);
+      color: var(--black);
+    }
+    footer {
+      background-color: var(--black);
+      color: var(--yellow); /* für mehr Konsistenz */
+      text-align: center;
+      padding: 1rem;
+    }
+    footer a {
+      color: var(--yellow);
+      text-decoration: underline;
+      transition: color 0.3s;
+    }
+    footer a:hover {
+      color: var(--yellow);
+    }
+    .coming-soon {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      background: var(--yellow);
+      color: #111;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      font-size: 1.2rem;
+      font-weight: 700;
+      z-index: 3;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    .founding-banner {
+      background: linear-gradient(90deg, #fff7f0 0%, #f9f9f9 100%);
+      color: var(--yellow); /* war: var(--red) */
+      text-align: center;
+      padding: 1rem;
+      font-weight: 600;
+      font-size: 1.2rem;
+      margin-bottom: 2.5rem;
+      border-radius: 1rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    /* CSS für Buchungssystem */
+    .book-btn {
+      background-color: var(--yellow); /* war: var(--red) */
+      color: var(--black);
+      padding: 0.5rem 1rem;
+      border-radius: 9999px;
+      text-decoration: none;
+      display: inline-block;
+      transition: background-color 0.3s;
+      cursor: pointer;
+      border: none;
+    }
+    .book-btn:hover {
+      background-color: var(--yellow);
+      color: var(--black);
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1001;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.4);
+      padding-top: 60px;
+    }
+    .modal-content {
+      background-color: var(--white);
+      margin: 5% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      max-width: 600px;
+      border-radius: 1rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .booking-form label {
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    .booking-form input, .booking-form textarea {
+      width: 100%;
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+      border: 1px solid var(--yellow);
+      border-radius: 0.5rem;
+      box-sizing: border-box;
+    }
+    .booking-form button {
+      background-color: var(--yellow); /* war: var(--red) */
+      color: var(--black);
+      padding: 0.75rem;
+      border: none;
+      border-radius: 9999px;
+      cursor: pointer;
+      width: 100%;
+      transition: background-color 0.3s;
+    }
+    .booking-form button:hover {
+      background-color: var(--yellow);
+      color: var(--black);
+    }
+    .error {
+      color: var(--yellow); /* war: var(--red) */
+      font-size: 0.9rem;
+    }
+    @media (max-width: 600px) {
+      nav ul {
+        gap: 1.2rem;
+      }
+      nav a {
+        font-size: 1rem;
+      }
+      .hero-logo {
+        width: clamp(200px, 60vw, 300px);
+      }
+      .slide-content {
+        flex-direction: column;
+        align-items: center;
+      }
+      .slide-text {
+        text-align: center;
+      }
+      .main-image img {
+        max-width: 90vw;
+        max-height: 180px;
+      }
+      .about-inner {
+        flex-direction: column;
+      }
+      .about-img {
+        width: 120px;
+        height: 120px;
+      }
+      .modal-content {
+        width: 90%;
+      }
+    }
+    @media (max-width: 900px) {
+      .slide {
+        min-width: 98vw;
+        max-width: 98vw;
+      }
+      .slide-content {
+        flex-direction: column;
+      }
+      .thumbnail-images {
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="founding-banner" aria-live="polite">
+      <p data-lang="de">Die Firma "Charly Fox Ventures GmbH" befindet sich derzeit in der Gründungsphase. Inhalte der Website sind möglicherweise fehlerhaft. Wir freuen uns auf den Launch im Sommer 2026</p>
+      <p data-lang="it" style="display: none;">La società "Charly Fox Ventures GmbH" si trova attualmente nella fase di fondazione. Non vediamo l'ora di aprire estate 2026</p>
+      <p data-lang="en" style="display: none;">"Charly Fox Ventures GmbH" is currently in the founding phase. We are planning to launch Summer '26</p>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#home" data-lang="de">Home</a></li>
+        <li><a href="#about" data-lang="de">Über uns</a></li>
+        <li><a href="#houses" data-lang="de">Ferienhäuser</a></li>
+        <li><a href="#contact" data-lang="de">Kontakt</a></li>
+      </ul>
+    </nav>
+    <div class="language-select">
+      <img src="https://flagcdn.com/24x18/de.png" alt="Deutsch" title="Deutsch" onclick="changeLanguage('de')">
+      <img src="https://flagcdn.com/24x18/it.png" alt="Italiano" title="Italiano" onclick="changeLanguage('it')">
+      <img src="https://flagcdn.com/24x18/gb.png" alt="English" title="English" onclick="changeLanguage('en')">
+    </div>
+    <div class="header-social" style="position: absolute; top: 1rem; right: 1rem; display: flex; gap: 0.5rem;">
+      <a href="https://www.instagram.com/charlyfox_ug" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--black)" stroke-width="1.5" width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="2" width="20" height="20" rx="5" stroke="var(--black)" fill="var(--white)"/>
+          <circle cx="12" cy="12" r="5" stroke="var(--black)"/>
+          <circle cx="17" cy="7" r="1" fill="var(--black)"/>
+        </svg>
+      </a>
+    </div>
+  </header>
+  <section id="home" class="hero">
+    <img src="assets/images/Firmenlogo1.0.png" alt="Charly Fox Logo" class="hero-logo" loading="lazy" onerror="this.src='https://placehold.co/1200x300?text=Logo';">
+    <div class="slider">
+      <div class="slides">
+        <div class="slide">
+          <div class="slide-content">
+            <div class="main-image">
+              <img src="/assets/images/Haus Beispiel.png" alt="Hauptbild Casa Bella Vista" loading="lazy" onerror="this.src='https://placehold.co/350x350?text=Casa+Bella+Vista';">
+            </div>
+            <div class="slide-right">
+              <div class="coming-soon" data-lang="de">Coming Soon</div>
+              <div class="slide-text">
+                <h3 data-lang="de">Casa Bella Vista</h3>
+                <p data-lang="de">Genießen Sie die ligurische Küste von der Casa Bella Vista aus. Dieses charmante Haus in La Spezia besticht durch seine Nähe zum Meer, eine moderne Ausstattung und einen traumhaften Garten. Perfekt für Paare oder kleine Familien.</p>
+                <button class="book-btn" onclick="openBookingModal('Casa Bella Vista')">Buchen</button>
+              </div>
+              <div class="thumbnail-images">
+                <img src="/assets/images/Hausbeispiel3.jpg" alt="Bild 1 Casa Bella Vista" loading="lazy" onerror="this.src='https://placehold.co/100x70?text=Bild+1';">
+                <img src="/assets/images/Hausbeispiel4.jpg" alt="Bild 2 Casa Bella Vista" loading="lazy" onerror="this.src='https://placehold.co/100x70?text=Bild+2';">
+                <img src="/assets/images/Hausbeispiel5.jpg" alt="Bild 3 Casa Bella Vista" loading="lazy" onerror="this.src='https://placehold.co/100x70?text=Bild+3';">
+                <img src="/assets/images/Hausbeispiel6.jpg" alt="Bild 4 Casa Bella Vista" loading="lazy" onerror="this.src='https://placehold.co/100x70?text=Bild+4';">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="slide">
+          <div class="slide-content">
+            <div class="main-image">
+              <img src="/assets/images/Hausbeispiel2.jpg" alt="Hauptbild Finca del Mar" loading="lazy" onerror="this.src='https://placehold.co/350x350?text=Finca+del+Mar';">
+            </div>
+            <div class="slide-right">
+              <div class="coming-soon" data-lang="de">Coming Soon</div>
+              <div class="slide-text">
+                <h3 data-lang="de">Finca del Mar</h3>
+                <p data-lang="de">Die Finca del Mar ist ein rustikales Juwel an der Adria, ideal für Naturliebhaber. Mit direktem Strandzugang, einem großen Garten und gemütlichen Innenräumen bietet sie Platz für bis zu 8 Personen.</p>
+                <button class="book-btn" onclick="openBookingModal('Finca del Mar')">Buchen</button>
+              </div>
+              <div class="thumbnail-images">
+                <img src="/assets/images/Hausbeispiel2.jpg" alt="Bild 1 Finca del Mar" loading="lazy" onerror="this.src='https://placehold.co/100x70?text=Bild+1';">
+                <img src="/assets/images/Hausbeispiel4.jpg" alt="Bild 2 Finca del Mar" loading="lazy" onerror="this.src='https://placehold.co/100x70?text=Bild+2';">
+                <img src="/assets/images/Hausbeispiel5.jpg" alt="Bild 3 Finca del Mar" loading="lazy" onerror="this.src='https://placehold.co/100x70?text=Bild+3';">
+                <img src="/assets/images/Hausbeispiel6.jpg" alt="Bild 4 Finca del Mar" loading="lazy" onerror="this.src='https://placehold.co/100x70?text=Bild+4';">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="slide">
+          <div class="slide-content">
+            <div class="main-image">
+              <img src="/assets/images/Hausbeispiel3.jpg" alt="Hauptbild Chalet Montagna" loading="lazy" onerror="this.src='https://placehold.co/350x350?text=Chalet+Montagna';">
+            </div>
+            <div class="slide-right">
+              <div class="coming-soon" data-lang="de">Coming Soon</div>
+              <div class="slide-text">
+                <h3 data-lang="de">Chalet Montagna</h3>
+                <p data-lang="de">Das Chalet Montagna am Gardasee ist der perfekte Rückzugsort für Bergfreunde. Mit Panoramablick auf die Alpen, einer Sauna und einer großen Terrasse ist es ideal für Gruppen oder Familien.</p>
+                <button class="book-btn" onclick="openBookingModal('Chalet Montagna')">Buchen</button>
+              </div>
+              <div class="thumbnail-images">
+                <img src="/assets/images/Hausbeispiel2.jpg" alt="Bild 1 Chalet Montagna" loading="lazy" onerror="this.src='https://placehold.co/100x70?text=Bild+1';">
+                <img src="/assets/images/Hausbeispiel3.jpg" alt="Bild 2 Chalet Montagna" loading="lazy" onerror="this.src='https://placehold.co/100x70?text=Bild+2';">
+                <img src="/assets/images/Hausbeispiel5.jpg" alt="Bild 3 Chalet Montagna" loading="lazy" onerror="this.src='https://placehold.co/100x70?text=Bild+3';">
+                <img src="/assets/images/Hausbeispiel6.jpg" alt="Bild 4 Chalet Montagna" loading="lazy" onerror="this.src='https://placehold.co/100x70?text=Bild+4';">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="slider-controls">
+        <button id="prev" aria-label="Vorheriger Slide">❮</button>
+        <button id="next" aria-label="Nächster Slide">❯</button>
+      </div>
+      <div class="slider-dots">
+        <span class="active"></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </section>
+  <section id="about" class="about">
+    <h2 data-lang="de">Über uns</h2>
+    <div class="about-person about-vater">
+      <div class="about-inner">
+        <div class="about-header">
+          <h3 class="about-name" data-lang="de">Kurt</h3>
+          <p class="about-role" data-lang="de">Impuls-Geber</p>
+        </div>
+        <img src="assets/images/Kurt.jpg"mages/ alt="Kurt Franz Peter" class="about-img" loading="lazy" onerror="this.src='https://placehold.co/260x260?text=Kurt';">
+        <div class="about-text">
+          <p data-lang="de">Mein Vater Kurt (aka Charly Fox, wie er häufig genannt wurde) war auf der ganzen Welt zuhause und hat immer nach guten Unterkünften in sonnigen Ländern gesucht. Mit seiner Erfahrung aus Immobilienvermietung und seiner cosmopolitischen Weitsicht hat er den Grundstein für unsere Philosophie gelegt: Gastfreundschaft, Authentizität und ein Hauch Abenteuer.</p>
+        </div>
+      </div>
+    </div>
+    <div class="about-person about-martin">
+      <div class="about-inner">
+        <div class="about-header">
+          <h3 class="about-name" data-lang="de">Martin</h3>
+          <p class="about-role" data-lang="de">Geschäftsführer & Gastgeber</p>
+        </div>
+        <img src="/assets/images/Martin.jpg" alt="Martin Peter" class="about-img" loading="lazy" onerror="this.src='https://placehold.co/260x260?text=Martin';">
+        <div class="about-text">
+          <p data-lang="de">Ich bin Martin, dein Ansprechpartner und Geschäftsführer von "La Dolce Vita by Charly Fox". Mit Leidenschaft für die italienische Lebensart, modernen Service und Immobilienrenovierung führe ich unser Unternehmen mit Leidenschaft. Mit der gleichen Hingabe zu Immobilienanlagen wie mein Vater sie hatte, möchte ich meinen Gästen eine bezahlbare, wundervolle Urlaubserfahrung bieten. Ich setze die Qualitätsstandards so hoch wie möglich um euch einen tollen Urlaub zu ermöglichen. Ich freue mich auf deine Anfrage!</p>
+        </div>
+      </div>
+    </div>
+    <div class="about-person about-tiziana">
+      <div class="about-inner">
+        <div class="about-header">
+          <h3 class="about-name" data-lang="de">Tiziana</h3>
+          <p class="about-role" data-lang="de">Immobilienankauf, Gästebetreuung, Übersetzerin</p>
+        </div>
+        <img src="/Website/assets/images/Tiziana.jpeg" alt="Tiziana Peter" class="about-img" loading="lazy" onerror="this.src='https://placehold.co/260x260?text=Tiziana';">
+        <div class="about-text">
+          <p data-lang="de">Tizi ist das Herz unserer Kommunikation in Bella Italia. Als erfahrene Übersetzerin sorgt sie dafür, dass unsere Gäste und Partner sich in jeder Sprache verstanden fühlen und immer bestens informiert sind. Durch die Verbundenheit zu ihrer Heimat Italien und ihrer Leidenschaft für Immobilien, ist sie eine wertvolle Unterstützung bei der Auswahl und dem Ankauf neuer "Case".</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <img src="assets/images/Werbebanner1.png" alt="Werbebanner" loading="lazy" style="width: 90%; display: block; margin: 2rem auto;" onerror="this.src='https://placehold.co/1200x200?text=Banner';">
+  <section id="contact" class="contact">
+    <h2 data-lang="de">Kontaktieren Sie uns!</h2>
+    <form name="contact" method="POST" data-netlify="true" data-netlify-recaptcha="true">
+      <input type="hidden" name="form-name" value="contact">
+      <label for="name" data-lang="de">Dein Name</label>
+      <input type="text" id="name" name="name" required>
+      <label for="email" data-lang="de">Deine E-Mail</label>
+      <input type="email" id="email" name="email" required>
+      <label for="message" data-lang="de">Deine Nachricht</label>
+      <textarea id="message" name="message" required></textarea>
+      <div data-netlify-recaptcha="true"></div>
+      <button type="submit" data-lang="de">Abschicken!</button>
+    </form>
+  </section>
+  <!-- Buchungs-Modal -->
+  <div id="bookingModal" class="modal" style="display: none;">
+    <div class="modal-content">
+      <span class="close" onclick="closeBookingModal()">×</span>
+      <h2 id="houseTitle">Buchung für [Haus]</h2>
+      <form class="booking-form" name="booking" method="POST" data-netlify="true" onsubmit="validateBooking(event)">
+        <input type="hidden" name="form-name" value="booking">
+        <input type="hidden" id="houseName" name="house">
+        <label for="checkin">Check-in Datum</label>
+        <input type="date" id="checkin" name="checkin" required min="2025-07-16">
+        <label for="checkout">Check-out Datum</label>
+        <input type="date" id="checkout" name="checkout" required>
+        <label for="adults">Erwachsene</label>
+        <input type="number" id="adults" name="adults" min="1" max="8" value="1" required>
+        <label for="children">Kinder</label>
+        <input type="number" id="children" name="children" min="0" max="4" value="0" required>
+        <label for="bookingName">Name</label>
+        <input type="text" id="bookingName" name="name" required>
+        <label for="bookingEmail">E-Mail</label>
+        <input type="email" id="bookingEmail" name="email" required>
+        <p id="bookingError" class="error" style="display: none;"></p>
+        <button type="submit">Buchung senden</button>
+      </form>
+    </div>
+  </div>
+  <footer>
+    <p>© <span id="year"></span> Charly Fox Ventures GmbH. Alle Rechte vorbehalten.</p>
+    <p><a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a></p>
+  </footer>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const translations = {
+      de: {
+        navHome: 'Home',
+        navAbout: 'Über uns',
+        navHouses: 'Ferienhäuser',
+        navContact: 'Kontakt',
+        casaTitle: 'Casa Bella Vista',
+        casaDesc: 'Genießen Sie die ligurische Küste von der Casa Bella Vista aus. Dieses charmante Haus in La Spezia besticht durch seine Nähe zum Meer, eine moderne Ausstattung und einen traumhaften Garten. Perfekt für Paare oder kleine Familien.',
+        fincaTitle: 'Finca del Mar',
+        fincaDesc: 'Die Finca del Mar ist ein rustikales Juwel an der Adria, ideal für Naturliebhaber. Mit direktem Strandzugang, einem großen Garten und gemütlichen Innenräumen bietet sie Platz für bis zu 8 Personen.',
+        chaletTitle: 'Chalet Montagna',
+        chaletDesc: 'Das Chalet Montagna am Gardasee ist der perfekte Rückzugsort für Bergfreunde. Mit Panoramablick auf die Alpen, einer Sauna und einer großen Terrasse ist es ideal für Gruppen oder Familien.',
+        book: 'Buchen',
+        about: 'Über uns',
+        kurtName: 'Kurt',
+        kurtRole: 'Impuls-Geber',
+        kurtDesc: 'Mein Vater Kurt (aka Charly Fox, wie er häufig genannt wurde) war auf der ganzen Welt zuhause und hat immer nach guten Unterkünften in sonnigen Ländern gesucht. Mit seiner Erfahrung aus Immobilienvermietung und seiner cosmopolitischen Weitsicht hat er den Grundstein für unsere Philosophie gelegt: Gastfreundschaft, Authentizität und ein Hauch Abenteuer.',
+        martinName: 'Martin',
+        martinRole: 'Geschäftsführer & Gastgeber',
+        martinDesc: 'Ich bin Martin, dein Ansprechpartner und Geschäftsführer von "La Dolce Vita by Charly Fox". Mit Leidenschaft für die italienische Lebensart, modernen Service und Immobilienrenovierung führe ich unser Unternehmen mit Leidenschaft. Mit der gleichen Hingabe zu Immobilienanlagen wie mein Vater sie hatte, möchte ich meinen Gästen eine bezahlbare, wundervolle Urlaubserfahrung bieten. Ich setze die Qualitätsstandards so hoch wie möglich um euch einen tollen Urlaub zu ermöglichen. Ich freue mich auf deine Anfrage!',
+        tizianaName: 'Tiziana',
+        tizianaRole: 'Immobilienankauf, Gästebetreuung, Übersetzerin',
+        tizianaDesc: 'Tizi ist das Herz unserer Kommunikation in Bella Italia. Als erfahrene Übersetzerin sorgt sie dafür, dass unsere Gäste und Partner sich in jeder Sprache verstanden fühlen und immer bestens informiert sind. Durch die Verbundenheit zu ihrer Heimat Italien und ihrer Leidenschaft für Immobilien, ist sie eine wertvolle Unterstützung bei der Auswahl und dem Ankauf neuer "Case".',
+        contact: 'Kontaktieren Sie uns!',
+        nameLabel: 'Dein Name',
+        emailLabel: 'Deine E-Mail',
+        messageLabel: 'Deine Nachricht',
+        submit: 'Abschicken!',
+        comingSoon: 'Coming Soon'
+      },
+      it: {
+        navHome: 'Home',
+        navAbout: 'Chi siamo',
+        navHouses: 'Case vacanze',
+        navContact: 'Contatto',
+        casaTitle: 'Casa Bella Vista',
+        casaDesc: 'Goditi la costa ligure dalla Casa Bella Vista. Questa affascinante casa a La Spezia si distingue per la vicinanza al mare, arredi moderni e un giardino da sogno. Perfetto per coppie o piccole famiglie.',
+        fincaTitle: 'Finca del Mar',
+        fincaDesc: 'La Finca del Mar è un gioiello rustico sull\'Adriatico, ideale per gli amanti della natura. Con accesso diretto alla spiaggia, un grande giardino e interni accoglienti, offre spazio per fino a 8 persone.',
+        chaletTitle: 'Chalet Montagna',
+        chaletDesc: 'Il Chalet Montagna sul Lago di Garda è il rifugio perfetto per gli amanti della montagna. Con vista panoramica sulle Alpi, sauna e grande terrazza, è ideale per gruppi o famiglie.',
+        book: 'Prenota',
+        about: 'Chi siamo',
+        kurtName: 'Kurt',
+        kurtRole: 'Impulsore',
+        kurtDesc: 'Mio padre Kurt (aka Charly Fox, come era spesso chiamato) era a casa in tutto il mondo e ha sempre cercato buone sistemazioni in paesi soleggiati. Con la sua esperienza nella locazione immobiliare e la sua visione cosmopolita, ha posto le basi per la nostra filosofia: ospitalità, autenticità e un tocco di avventura.',
+        martinName: 'Martin',
+        martinRole: 'Amministratore Delegato & Host',
+        martinDesc: 'Sono Martin, il tuo contatto e amministratore delegato di "La Dolce Vita by Charly Fox". Con passione per lo stile di vita italiano, servizio moderno e ristrutturazione immobiliare, guido la nostra azienda con passione. Con la stessa dedizione agli investimenti immobiliari che aveva mio padre, voglio offrire ai miei ospiti un\'esperienza vacanziera conveniente e meravigliosa. Imposto gli standard di qualità il più alto possibile per offrirvi una grande vacanza. Non vedo l\'ora di ricevere la tua richiesta!',
+        tizianaName: 'Tiziana',
+        tizianaRole: 'Acquisto Immobiliare, Assistenza Ospiti, Traduttrice',
+        tizianaDesc: 'Tizi è il cuore della nostra comunicazione in Bella Italia. Come traduttrice esperta, garantisce che i nostri ospiti e partner si sentano compresi in ogni lingua e siano sempre ben informati. Grazie al legame con la sua patria Italia e la passione per gli immobili, è un prezioso supporto nella selezione e nell\'acquisto di nuove "Case".',
+        contact: 'Contattaci!',
+        nameLabel: 'Il tuo nome',
+        emailLabel: 'La tua e-mail',
+        messageLabel: 'Il tuo messaggio',
+        submit: 'Invia!',
+        comingSoon: 'Prossimamente'
+      },
+      en: {
+        navHome: 'Home',
+        navAbout: 'About us',
+        navHouses: 'Holiday Homes',
+        navContact: 'Contact',
+        casaTitle: 'Casa Bella Vista',
+        casaDesc: 'Enjoy the Ligurian coast from Casa Bella Vista. This charming house in La Spezia stands out with its proximity to the sea, modern furnishings, and a dreamy garden. Perfect for couples or small families.',
+        fincaTitle: 'Finca del Mar',
+        fincaDesc: 'Finca del Mar is a rustic gem on the Adriatic, ideal for nature lovers. With direct beach access, a large garden, and cozy interiors, it offers space for up to 8 people.',
+        chaletTitle: 'Chalet Montagna',
+        chaletDesc: 'Chalet Montagna on Lake Garda is the perfect retreat for mountain enthusiasts. With panoramic views of the Alps, a sauna, and a large terrace, it is ideal for groups or families.',
+        book: 'Book',
+        about: 'About us',
+        kurtName: 'Kurt',
+        kurtRole: 'Impulse Giver',
+        kurtDesc: 'My father Kurt (aka Charly Fox, as he was often called) was at home all over the world and always looked for good accommodations in sunny countries. With his experience in real estate rental and his cosmopolitan foresight, he laid the foundation for our philosophy: hospitality, authenticity, and a touch of adventure.',
+        martinName: 'Martin',
+        martinRole: 'Managing Director & Host',
+        martinDesc: 'I am Martin, your contact person and managing director of "La Dolce Vita by Charly Fox". With passion for the Italian way of life, modern service, and real estate renovation, I lead our company with passion. With the same dedication to real estate investments as my father had, I want to offer my guests an affordable, wonderful holiday experience. I set the quality standards as high as possible to enable you to have a great holiday. I look forward to your inquiry!',
+        tizianaName: 'Tiziana',
+        tizianaRole: 'Real Estate Purchase, Guest Care, Translator',
+        tizianaDesc: 'Tizi is the heart of our communication in Bella Italia. As an experienced translator, she ensures that our guests and partners feel understood in every language and are always well informed. Through her connection to her homeland Italy and her passion for real estate, she is a valuable support in the selection and purchase of new "Case".',
+        contact: 'Contact us!',
+        nameLabel: 'Your Name',
+        emailLabel: 'Your E-Mail',
+        messageLabel: 'Your Message',
+        submit: 'Send!',
+        comingSoon: 'Coming Soon'
+      }
+    };
+
+    function changeLanguage(lang) {
+      localStorage.setItem('language', lang);
+      document.querySelectorAll('[data-lang]').forEach(el => {
+        const key = el.dataset.langKey || el.tagName.toLowerCase() + el.className.split(' ')[0];
+        if (translations[lang][key]) {
+          el.textContent = translations[lang][key];
+        }
+        el.style.display = el.dataset.lang === lang ? 'block' : 'none';
+      });
+      // Für Nav und andere
+      document.querySelector('a[href="#home"]').textContent = translations[lang].navHome;
+      document.querySelector('a[href="#about"]').textContent = translations[lang].navAbout;
+      document.querySelector('a[href="#houses"]').textContent = translations[lang].navHouses;
+      document.querySelector('a[href="#contact"]').textContent = translations[lang].navContact;
+      // Slide Titles and Descs
+      const slides = document.querySelectorAll('.slide-text');
+      slides[0].querySelector('h3').textContent = translations[lang].casaTitle;
+      slides[0].querySelector('p').textContent = translations[lang].casaDesc;
+      slides[1].querySelector('h3').textContent = translations[lang].fincaTitle;
+      slides[1].querySelector('p').textContent = translations[lang].fincaDesc;
+      slides[2].querySelector('h3').textContent = translations[lang].chaletTitle;
+      slides[2].querySelector('p').textContent = translations[lang].chaletDesc;
+      document.querySelectorAll('.book-btn').forEach(btn => btn.textContent = translations[lang].book);
+      document.querySelectorAll('.coming-soon').forEach(el => el.textContent = translations[lang].comingSoon);
+      // About
+      document.querySelector('#about h2').textContent = translations[lang].about;
+      const aboutHeaders = document.querySelectorAll('.about-name');
+      aboutHeaders[0].textContent = translations[lang].kurtName;
+      aboutHeaders[1].textContent = translations[lang].martinName;
+      aboutHeaders[2].textContent = translations[lang].tizianaName;
+      const aboutRoles = document.querySelectorAll('.about-role');
+      aboutRoles[0].textContent = translations[lang].kurtRole;
+      aboutRoles[1].textContent = translations[lang].martinRole;
+      aboutRoles[2].textContent = translations[lang].tizianaRole;
+      const aboutTexts = document.querySelectorAll('.about-text p');
+      aboutTexts[0].textContent = translations[lang].kurtDesc;
+      aboutTexts[1].textContent = translations[lang].martinDesc;
+      aboutTexts[2].textContent = translations[lang].tizianaDesc;
+      // Contact
+      document.querySelector('#contact h2').textContent = translations[lang].contact;
+      document.querySelector('label[for="name"]').textContent = translations[lang].nameLabel;
+      document.querySelector('label[for="email"]').textContent = translations[lang].emailLabel;
+      document.querySelector('label[for="message"]').textContent = translations[lang].messageLabel;
+      document.querySelector('.contact button').textContent = translations[lang].submit;
+      // Banner
+      document.querySelectorAll('.founding-banner p').forEach(p => p.style.display = 'none');
+      document.querySelector(`.founding-banner p[data-lang="${lang}"]`).style.display = 'block';
+      document.documentElement.lang = lang;
+    }
+
+    // Lade gespeicherte Sprache
+    const savedLang = localStorage.getItem('language') || 'de';
+    changeLanguage(savedLang);
+
+    // Slider Script
+    let currentSlide = 0;
+    const slidesContainer = document.querySelector('.slides');
+    const dots = document.querySelectorAll('.slider-dots span');
+    const totalSlides = document.querySelectorAll('.slide').length;
+    let autoSlideInterval;
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    function showSlide(index) {
+      if (index >= totalSlides) index = 0;
+      if (index < 0) index = totalSlides - 1;
+      currentSlide = index;
+      slidesContainer.style.transform = `translateX(-${index * 100}vw)`;
+      dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+    }
+
+    function nextSlide() {
+      showSlide(currentSlide + 1);
+    }
+
+    function prevSlide() {
+      showSlide(currentSlide - 1);
+    }
+
+    function startAutoSlide() {
+      autoSlideInterval = setInterval(nextSlide, 5000);
+    }
+
+    function stopAutoSlide() {
+      clearInterval(autoSlideInterval);
+    }
+
+    document.getElementById('next').addEventListener('click', () => {
+      stopAutoSlide();
+      nextSlide();
+      startAutoSlide();
+    });
+
+    document.getElementById('prev').addEventListener('click', () => {
+      stopAutoSlide();
+      prevSlide();
+      startAutoSlide();
+    });
+
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        stopAutoSlide();
+        showSlide(index);
+        startAutoSlide();
+      });
+    });
+
+    // Touch Swipe
+    document.querySelector('.slider').addEventListener('touchstart', e => touchStartX = e.changedTouches[0].screenX);
+    document.querySelector('.slider').addEventListener('touchend', e => {
+      touchEndX = e.changedTouches[0].screenX;
+      if (touchStartX - touchEndX > 50) nextSlide();
+      if (touchEndX - touchStartX > 50) prevSlide();
+    });
+
+    showSlide(0);
+    startAutoSlide();
+
+    // Buchungssystem JS
+    const modal = document.getElementById('bookingModal');
+    const houseTitle = document.getElementById('houseTitle');
+    const houseNameInput = document.getElementById('houseName');
+    const errorMsg = document.getElementById('bookingError');
+
+    function openBookingModal(houseName) {
+      houseTitle.textContent = `Buchung für ${houseName}`;
+      houseNameInput.value = houseName;
+      modal.style.display = "block";
+      errorMsg.style.display = "none";
+    }
+
+    function closeBookingModal() {
+      modal.style.display = "none";
+    }
+
+    function validateBooking(event) {
+      const checkin = document.getElementById('checkin').value;
+      const checkout = document.getElementById('checkout').value;
+      if (new Date(checkout) <= new Date(checkin)) {
+        errorMsg.textContent = "Check-out muss nach Check-in liegen.";
+        errorMsg.style.display = "block";
+        event.preventDefault();
+      }
+    }
+
+    modal.addEventListener('click', function(event) {
+      if (event.target === modal) {
+        closeBookingModal();
+      }
+    });
+  </script>
+</body>
+</html>
