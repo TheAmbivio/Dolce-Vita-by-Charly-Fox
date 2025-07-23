@@ -1,5 +1,5 @@
 {
   "scripts": {
-    "build": "dein-build-befehl-hier"
+    "build": "vite build"
   }
 }
